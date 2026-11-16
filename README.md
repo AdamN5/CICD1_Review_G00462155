@@ -71,40 +71,100 @@ BookingRepository.findByRoomName uses @Query with WHERE b.room.name = :roomName 
 Use Swagger UI or another HTTP client. For **at least four meaningful checks**, record the request/input, expected result, actual HTTP status/response, and pass/fail. Include unsuccessful cases; a running application alone is not enough.
 
 **Test 1 — successful booking request:**  
-- Request / input:  
-- Expected:  
-- Actual HTTP status / body:  
-- Pass / fail:  
+- Request / input:  POST /api/bookings
+{
+  "roomId": 1,
+  "organiserName": "Adamn",
+  "attendeeCount": 6
+}
+- Expected:  201  with id, roomId 1, roomName "Lab 201", organiserName Adamn, attendeeCount 6, status "ACTIVE"
+- Actual HTTP status / body:  201
+}
+  "id": 5,
+  "roomId": 1,
+  "roomName": "Lab 201",
+  "organiserName": "Adamn",
+  "attendeeCount": 6,
+  "status": "ACTIVE"
+}
+- Pass / fail:  Pass
 
 **Test 2 — invalid input or excessive attendee count:**  
-- Request / input:  
-- Expected:  
-- Actual HTTP status / body:  
-- Pass / fail:  
+- Request / input: POST /api/bookings
+{
+  "roomId": 2,
+  "organiserName": "Adamn",
+  "attendeeCount": 0
+}
+- Expected:  400
+- Actual HTTP status / body:  400
+{
+  "status": 400,
+  "message": "Attendee count must be positive"
+}
+- Pass / fail:  Pass
 
 **Test 3 — missing booking or room:**  
-- Request / input:  
-- Expected:  
-- Actual HTTP status / body:  
-- Pass / fail:  
+- Request / input: GET /api/bookings/{id}
+GET /api/bookings/999999
+- Expected:  404
+- Actual HTTP status / body:  404
+{
+  "status": 404,
+  "message": "Booking not found with ID: 999999"
+}
+- Pass / fail:  Pass
 
 **Test 4 — requirement specific to my group:**  
-- Request / input:  
-- Expected:  
-- Actual HTTP status / body:  
-- Pass / fail:  
+- Request / input:  GET /api/bookings/search
+/api/bookings/search?roomName=Lab%20201
+- Expected:  200
+List of bookings for room with bookings ordered by attendee count descending.
+- Actual HTTP status / body: 200
+[
+  {
+    "id": 2,
+    "roomId": 1,
+    "roomName": "Lab 201",
+    "organiserName": "Aoife Byrne",
+    "attendeeCount": 18,
+    "status": "ACTIVE"
+  },
+  {
+    "id": 1,
+    "roomId": 1,
+    "roomName": "Lab 201",
+    "organiserName": "Adam",
+    "attendeeCount": 10,
+    "status": "ACTIVE"
+  },
+  {
+    "id": 4,
+    "roomId": 1,
+    "roomName": "Lab 201",
+    "organiserName": "Bill",
+    "attendeeCount": 6,
+    "status": "ACTIVE"
+  },
+]
+- Pass / fail:  Pass
 
 **Group A:** Demonstrate `GET /api/bookings/search?roomName=...` using an exact room name, bookings ordered by attendee count descending, and an empty list for no matches. Add checks if necessary to show all three behaviours.
-
-**Group B:** Run the **provided** Room Service separately on port 8082 and the **new** Booking Service on port 8081. Demonstrate that booking creation obtains room details through OpenFeign and that booking retrieval uses the local Booking database. Do not modify the Room Service.
 
 ## 4. Reflection
 
 **What did I understand during the examination but struggle to implement?**  
 
+I understood that bookings belong to rooms and should return DTOs but I ran out of time to understand everything fully and connect the pieces. I spent too much time looking at previous labs and was out of practice from the reading week.
+I never wrote the room look up, checks or the search and forgot @RequestBody.
+
 **Which Spring Boot, JPA, validation, JPQL or OpenFeign concept became clearer after correcting my code? Give a specific example.**  
 
+Learned how JPQL searches work. in findByRoomName I can search bookings by the room name and the results come back with descending attendee count.
+
 **What will I do differently in my next coding test or API development task?**  
+
+I would practice better and only saw the the practice repository minutes before the test and struggled to read the paper as I was under pressure. In short I would practice well in advance, stay calm and read the paper better.
 
 ## Review lab assessment — 20 marks
 
