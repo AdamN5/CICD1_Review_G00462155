@@ -42,9 +42,29 @@ Describe **two or three important problems** in your original code. For each, ex
 
 **Problem and correction 1:**  
 
+Problem:
+Booking entity was returned direct without validation and with a boolean status.
+
+Fix: 
+Added BookingRequest and BookingResponse DTOs with proper validation. Added BookingStatus enum which defaults to active.
+
 **Problem and correction 2:**  
 
-**Problem and correction 3 (optional):**  
+Problem:
+My POST api/booking endpoint had no @RequestBody and no capacity check and no GET by id and no error handling.
+
+Fix: 
+BookingController now uses api/bookings. BookingService checks the room is there and the capacity with error handling if nothing exists.
+
+
+**Problem and correction 3 (optional):** 
+
+Problem:
+No JPQL search. 
+
+Fix: 
+BookingRepository.findByRoomName uses @Query with WHERE b.room.name = :roomName ORDER BY b.attendeeCount DESC, which gives an exact match, highest first, and [] if nothing matches.
+
 
 ## 3. API testing and evidence
 
