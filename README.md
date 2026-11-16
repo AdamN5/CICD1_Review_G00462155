@@ -1,27 +1,36 @@
 # CICD-1 Coding Test — Review, Improve and Reflect
 
-**Student ID:**  
-**Examination group:** A (Room Booking / JPQL) or B (OpenFeign):  
-**Original examination pull-request URL (`exam-work`):**  
-**New review repository URL:**  
+**Student ID:**  G00462155
+
+**Examination group:** A (Room Booking / JPQL) 
+
+**Original examination pull-request URL (`exam-work`):**  https://github.com/AdamN5/G00462155/pull/1
+
+**New review repository URL:**  https://github.com/AdamN5/CICD1_Review_G00462155
 
 ## 1. My original examination self-assessment
 
 Review the code **as submitted in the original examination**. Do not change the original repository, branch or pull request. Check your own Group A or Group B examination paper and award marks only for evidence present in the original submission.
 
 ### Task 1 — /40
-**My mark:**  
-**Evidence from the original code (files, methods, working or missing requirements):**  
+**My mark:** 12/40
+**Evidence from the original code (files, methods, working or missing requirements):**  The model Booking has "@ManyToOne @JoinColumn(name="room_id" Room room" and has "organiserName" "attendeeCount".
+Theres no validation for anything.
+No seperate DTO.
+"status" is a boolean instead of a status value, and theres no default.
 
 ### Task 2 — /40
-**My mark:**  
-**Evidence from the original code:**  
+**My mark:**  3/40
+**Evidence from the original code:**  A booking would be saved with no values as "create(Booking booking)" has no @RequestBody.
+Noo room lookup or capacity check. 
+I only wrote "getAll()" and needed to get by booking ids.
+No error handling.
 
 ### Task 3 — /20
-**My mark:**  
-**Evidence from the original code:**  
+**My mark:**  0/20
+**Evidence from the original code:**  BookingRepository is empty so there is no ordering by attendee count and no search endpoint.
 
-**Total self-assessed original examination mark: /100**
+**Total self-assessed original examination mark: 15/100**
 
 **Checkpoint:** Commit this completed self-assessment as the **first review commit in your new repository**, before you modify or add application code. The lecturer decides the official original examination mark.
 
