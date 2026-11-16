@@ -1,3 +1,26 @@
+# CICD-1 Coding Test — Review, Improve and Reflect
+
+**Student ID:**  
+**Examination group:** A (Room Booking / JPQL) or B (OpenFeign):  
+**Original examination pull-request URL (`exam-work`):**  
+**New review repository URL:**  
+
+## 1. My original examination self-assessment
+
+Review the code **as submitted in the original examination**. Do not change the original repository, branch or pull request. Check your own Group A or Group B examination paper and award marks only for evidence present in the original submission.
+
+### Task 1 — /40
+**My mark:**  
+**Evidence from the original code (files, methods, working or missing requirements):**  
+
+### Task 2 — /40
+**My mark:**  
+**Evidence from the original code:**  
+
+### Task 3 — /20
+**My mark:**  
+**Evidence from the original code:**  
+
 **Total self-assessed original examination mark: /100**
 
 **Checkpoint:** Commit this completed self-assessment as the **first review commit in your new repository**, before you modify or add application code. The lecturer decides the official original examination mark.
